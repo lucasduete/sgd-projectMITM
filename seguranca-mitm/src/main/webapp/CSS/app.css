@@ -9,17 +9,27 @@
     -o-animation: fadeIn 1s;
     animation: fadeIn 1s;
 }
-body{
-    background-color: #42a5f5;
+
+html {
+    background: #1565c0;
+}
+body {
+    background-repeat: no-repeat;
+    background: #1565c0;
+    background: -webkit-gradient(linear, left top, left bottom, from(#64b5f6), to(#1565c0));
+    background: -moz-linear-gradient(top, #64b5f6 , #1565c0);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#64b5f6', endColorstr='#1565c0');
 }
 
-
+body{
+    background-color: #1976d2;
+}
 
 .btn{
-    background-color:  #1565c0;
+    background-color:  #1976d2;
     float: right;
 }
 
 .btn:hover{
-    background-color: #0d47a1;
+    background-color: #1976d2;
 }
