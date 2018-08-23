@@ -9,3 +9,17 @@
     -o-animation: fadeIn 1s;
     animation: fadeIn 1s;
 }
+body{
+    background-color: #42a5f5;
+}
+
+
+
+.btn{
+    background-color:  #1565c0;
+    float: right;
+}
+
+.btn:hover{
+    background-color: #0d47a1;
+}
