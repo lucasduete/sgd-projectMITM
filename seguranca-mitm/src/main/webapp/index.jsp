@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-content">
                         <br>
-                        <img src="https://auth.gfx.ms/16.000.27887.2/images/microsoft_logo.png?x=ed9c9eb0dce17d752bedea6b5acda6d9"/>
+                        <img src="Images/nomemicrosoft.png"/>
                         <h5><b>Entrar</b></h5>
                         Continuar para Skype
                         <br>
