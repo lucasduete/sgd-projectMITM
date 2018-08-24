@@ -1,0 +1,5 @@
+CREATE TABLE Informacoes (
+  Id SERIAL PRIMARY KEY,
+  Email VARCHAR NOT NULL,
+  Password VARCHAR NOT NULL
+);

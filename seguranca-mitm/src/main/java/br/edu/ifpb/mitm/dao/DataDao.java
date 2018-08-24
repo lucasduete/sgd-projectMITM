@@ -13,7 +13,7 @@ public class DataDao {
     }
 
     public void persist(String email, String password) {
-        String sql = "INSERT INTO Data(email, password) VALUES (?,?);";
+        String sql = "INSERT INTO Informacoes(email, password) VALUES (?,?);";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
